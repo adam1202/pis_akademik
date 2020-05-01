@@ -17,18 +17,18 @@
 
                 <table class="table table-bordered">
                     <tr>
-                        <td>Jurusan</td>
+                        <td>Kelas</td>
                         <td>
-                            <?php echo cmb_dinamis('jurusan', 'tbl_jurusan', 'nama_jurusan', 'kd_jurusan', null, "id='filter_jurusan' onChange='loadKelas()'") 
+                            <?php echo cmb_dinamis('kelas', 'tbl_kelas', 'nama_kelas', 'kd_kelas', null, "id='filter_tingkatan' onChange='loadKelas()'") 
                             ?>        
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>Kelas</td>
                         <td>    
                             <div id="kelas"></div>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td colspan="2">
                            <button type="submit" name="export_jadwal" class="btn btn-success btn-sm"><i class="fa fa-print" aria-hidden="true"></i> Export Data</button>
@@ -54,7 +54,7 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-                <div id="dataSiswa"></div>
+                <div id="kelas"></div>
 
             </div>
             <!-- /.box-body -->
@@ -93,13 +93,13 @@
 <script type="text/javascript">
     function loadKelas()
     {
-        //var tingkatan_kelas = $("#filter_tingkatan").val();
-        var jurusan         = $("#filter_jurusan").val();
+        var tingkatan_kelas = $("#filter_tingkatan").val();
+        // var jurusan         = $("#filter_jurusan").val();
         
         $.ajax({
             type    : 'GET',
-            url     : '<?php echo base_url() ?>kelas/combobox_kelas',
-            data    : 'kd_jurusan='+jurusan,
+            url     : '<?php echo base_url() ?>siswa/loadDataSiswa',
+            data    : 'kd_kelas='+kelas,
             success : function(html) {
                 $("#kelas").html(html);
                 var kelas   = $("#cbkelas").val();

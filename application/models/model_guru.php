@@ -9,9 +9,9 @@
     {
       $data = array(
         //tabel di database => name di form
-        'nuptk'       => $this->input->post('nuptk', TRUE),
+        'nip'       => $this->input->post('nip', TRUE),
         'nama_guru'   => $this->input->post('nama_guru', TRUE),
-        'gender'      => $this->input->post('gender', TRUE),
+        'jenis_kelamin'      => $this->input->post('jenis_kelamin', TRUE),
         'username'    => $this->input->post('username', TRUE),
         'password'    => md5($this->input->post('password', TRUE)),
       );
@@ -22,9 +22,9 @@
     {
       $data = array(
         //tabel di database => name di form
-        'nuptk'       => $this->input->post('nuptk', TRUE),
+        'nip'       => $this->input->post('nip', TRUE),
         'nama_guru'   => $this->input->post('nama_guru', TRUE),
-        'gender'      => $this->input->post('gender', TRUE),
+        'jenis_kelamin'      => $this->input->post('jenis_kelamin', TRUE),
         'username'    => $this->input->post('username', TRUE),
         'password'    => md5($this->input->post('password', TRUE)),
         //'semester_aktif'  = $this->input->post('semester_aktif', TRUE)

@@ -21,7 +21,6 @@
                         <th>KODE KELAS</th>
                         <th>NAMA KELAS</th>
                         <th>TINGKATAN</th>
-                        <th>JURUSAN</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -75,11 +74,7 @@
                         "width": "100px",
                         "class": "text-center"
                     },
-                    { 
-                        "data": "nama_jurusan",
-                        "width": "100px",
-                        "class": "text-center"
-                    },
+
                     { 
                         "data": "aksi",
                         "width": "80px",

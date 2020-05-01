@@ -123,7 +123,7 @@
 
 			echo "<table class='table table-striped table-bordered table-hover table-full-width dataTable'>
 					<tr>
-						<th width=100 class='text-center'>nisn</th>
+						<th width=100 class='text-center'>NISN</th>
 						<th>NAMA</th>
 						<th class='text-center'>NILAI</th>
 					</tr>";

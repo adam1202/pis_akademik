@@ -9,21 +9,21 @@
 		{
 			$data = array(
 				//tabel di database => name di form
-				'nim'           => $this->input->post('nim', TRUE),
+				'nisn'           => $this->input->post('nisn', TRUE),
 				'nama'          => $this->input->post('nama', TRUE),
 				'tanggal_lahir' => $this->input->post('tanggal_lahir', TRUE),
 				'tempat_lahir'  => $this->input->post('tempat_lahir', TRUE),
-				'gender'        => $this->input->post('gender', TRUE),
+				'jenis_kelamin'        => $this->input->post('jenis_kelamin', TRUE),
 				'kd_agama'	    => $this->input->post('agama', TRUE),
 				'foto'			=> $foto,
 				'kd_kelas'	    => $this->input->post('kelas', TRUE),
 			);
 			$this->db->insert($this->table, $data);
 
-			// ketika pengguna menginsert data siswa, maka data nim, kd_kelas dan tahun_akademik_aktif akan otomatis terinsert dengan sendirinya ke tbl_riwayat_kelas
+			// ketika pengguna menginsert data siswa, maka data nisn, kd_kelas dan tahun_akademik_aktif akan otomatis terinsert dengan sendirinya ke tbl_riwayat_kelas
 			$tahun_akademik = $this->db->get_where('tbl_tahun_akademik', array('is_aktif' => 'Y'))->row_array();
 			$riwayat = array(
-							'nim' 				=> $this->input->post('nim', TRUE),
+							'nisn' 				=> $this->input->post('nisn', TRUE),
 							'kd_kelas'			=> $this->input->post('kelas', TRUE),
 							'id_tahun_akademik'	=> $tahun_akademik['id_tahun_akademik']
 						); 
@@ -38,7 +38,7 @@
 					'nama'          => $this->input->post('nama', TRUE),
 					'tanggal_lahir' => $this->input->post('tanggal_lahir', TRUE),
 					'tempat_lahir'  => $this->input->post('tempat_lahir', TRUE),
-					'gender'        => $this->input->post('gender', TRUE),
+					'jenis_kelamin'        => $this->input->post('jenis_kelamin', TRUE),
 					'kd_agama'	    => $this->input->post('agama', TRUE),
 					'kd_kelas'	    => $this->input->post('kelas', TRUE),
 				);
@@ -48,15 +48,15 @@
 					'nama'          => $this->input->post('nama', TRUE),
 					'tanggal_lahir' => $this->input->post('tanggal_lahir', TRUE),
 					'tempat_lahir'  => $this->input->post('tempat_lahir', TRUE),
-					'gender'        => $this->input->post('gender', TRUE),
+					'jenis_kelamin'        => $this->input->post('jenis_kelamin', TRUE),
 					'kd_agama'	    => $this->input->post('agama', TRUE),
 					'foto'			=> $foto,
 					'kd_kelas'	    => $this->input->post('kelas', TRUE),
 				);
 			}
 
-			$nim	= $this->input->post('nim');
-			$this->db->where('nim', $nim);
+			$nisn	= $this->input->post('nisn');
+			$this->db->where('nisn', $nisn);
 			$this->db->update($this->table, $data);
 		}
 

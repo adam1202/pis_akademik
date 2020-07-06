@@ -15,7 +15,7 @@
                 <div class="box-body">
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Nip</label>
+                      <label class="col-sm-2 control-label">NIP</label>
 
                       <div class="col-sm-9">
                         <input type="text" name="nip" class="form-control" placeholder="Masukkan nip">
@@ -35,7 +35,7 @@
 
                       <div class="col-sm-5">
                         <?php
-                          echo form_dropdown('jenis kelamin', array('Jenis Kelamin', 'P'=>'Pria', 'W'=>'Wanita'), null, "class='form-control'");
+                          echo form_dropdown('jenis_kelamin', array('Pilih Jenis Kelamin', 'L'=>'Laki-Laki', 'P'=>'Perempuan'), null, "class='form-control'");
                         ?>
                       </div>
                   </div>

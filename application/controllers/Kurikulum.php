@@ -35,8 +35,7 @@
 		              'db' => 'id_kurikulum',
 		              'dt' => 'aksi',
 		              'formatter' => function($d) {
-		               		return anchor('kurikulum/detail/'.$d, '<i class="fa fa-eye"></i>', 'class="btn btn-xs bg-orange" data-placement="top" title="View Detail"').'
-                      '.anchor('kurikulum/edit/'.$d, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-primary" data-placement="top" title="Edit"').'
+		               		return anchor('kurikulum/edit/'.$d, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-primary" data-placement="top" title="Edit"').'
 		               		'.anchor('kurikulum/delete/'.$d, '<i class="fa fa-times fa fa-white"></i>', 'class="btn btn-xs btn-danger" data-placement="top" title="Delete"');
 		            }
 		        )

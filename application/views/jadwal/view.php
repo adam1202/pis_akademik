@@ -15,7 +15,7 @@
                 ?>
                 <table class="table table-bordered">
                     <tr>
-                        <td>Jurusan</td>
+                        <td>Tingkat Kelas</td>
                         <td>
                             <?php echo cmb_dinamis('jurusan', 'tbl_jurusan', 'nama_jurusan', 'kd_jurusan', null, "id='filter_jurusan' onChange='loadKelas()'") 
                             ?>        

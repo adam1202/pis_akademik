@@ -6,42 +6,61 @@
             <div class="box-header  with-border">
                 <?php
                     $nisn   = $this->uri->segment(3);
-                    $query = "SELECT ts.nama
-                            FROM tbl_nilai AS tn, tbl_siswa AS ts
-                            WHERE tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
-                    $nama = $this->db->query($query)->row_array();
+                    $query = "SELECT ts.nama, tm.kd_mapel, tn.nisn
+
+                            FROM tbl_nilai AS tn, tbl_siswa AS ts, tbl_mapel AS tm
+                            WHERE tn.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
+                    $sql = $this->db->query($query)->row_array();
                 ?>
-              <h3 class="box-title">Data Nilai Siswa <?php echo $nama['nama']; ?></h3>
+              <h3 class="box-title">Data Nilai Siswa <?php echo $namanya = $sql['nama']; ?></h3>
+              
+
+
+              
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
             <!-- button add -->
+            <!-- button add -->
+
+            <?php
+           
+                echo anchor('nilai/add_nilai/', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
+                
+            ?>
+
+            <a target="_blank" class="btn btn-danger btn-flat margin" href="<?= base_url('siswa/report_nilai').'?nisn='.$nisn; ?>">EXPORT NILAI</a>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th width="50px">NO</th>
                         <th>Nama Mapel</th>
+                        <!-- <th>Tingkatan<th>
+                        <th>Kelas<th> -->
+                        
                         <th>Nilai</th>
-                        <th class="text-center">Keterangan</th>
+
+                        <th class="text-center">Huruf Mutu</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
+                    
 
                         $no = 1;
                         foreach ($nilai_siswa->result() as $row) {
                             
                             // nilai
                             if($row->nilai > 90){
-                                $Keterangan = '<p class="text-green">Sangat baik</p>';
+                                $Keterangan = '<p class="text-black">A</p>';
                             }elseif($row->nilai > 80 and $row->nilai <= 90){
-                                $Keterangan = '<p class="text-green">Baik</p>';
+                                $Keterangan = '<p class="text-black">B</p>';
                             }elseif($row->nilai > 70 and $row->nilai <= 80){
-                                $Keterangan = '<p class="text-yellow">Cukup</p>';
+                                $Keterangan = '<p class="text-black">C</p>';
                             }else{
-                                $Keterangan = '<p class="text-red">Kurang</p>';
+                                $Keterangan = '<p class="text-black">D</p>';
                             }
 
                             echo "<tr>
@@ -90,4 +109,27 @@
             "order": [[ 1, "asc" ]]
         } );
     } );
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadKelas();
+    });
+</script>
+
+<!-- <script type="text/javascript">
+    $(document).ready(function(){
+        loadKelas();
+    });
+</script> -->
+
+<script type="text/javascript">
+    function loadNISN()
+		{
+			$nisn = $_GET['nisn'];
+            <?php
+                echo anchor('nilai/add_nilai/', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
+            ?>
+		}
 </script>

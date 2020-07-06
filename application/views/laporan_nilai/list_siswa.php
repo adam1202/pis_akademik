@@ -33,16 +33,16 @@
 
               <table class="table table-bordered">
                   <tr>
-                      <th class="text-center" width="100">NISN</th>
+                      <th class="text-center" width="100">NISN/th>
                       <th>NAMA</th>
                       <th class="text-center" width="100">AKSI</th>
                   </tr>
                   <?php
                     foreach ($siswa->result() as $row) {
                         echo "<tr>
-                                <td class='text-center'>$row->nisn</td>
+                                <td class='text-center'>$row->nim</td>
                                 <td>$row->nama</td>
-                                <td>".anchor('laporan_nilai/nilai_semester/'.$row->nisn, 'Lihat Laporan Nilai', 'class="btn btn-sm btn-danger"')."</td>
+                                <td>".anchor('laporan_nilai/nilai_semester/'.$row->nim, 'Lihat Laporan Nilai', 'class="btn btn-sm btn-danger"')."</td>
                              </tr>";
                     }
                   ?>

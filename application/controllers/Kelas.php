@@ -30,7 +30,7 @@
 				array('db' => 'kd_kelas', 'dt' => 'kd_kelas'),
 		        array('db' => 'nama_kelas', 'dt' => 'nama_kelas'),
 		        array('db' => 'nama_tingkatan', 'dt' => 'nama_tingkatan'),
-		  
+		        array('db' => 'nama_jurusan', 'dt' => 'nama_jurusan'),
 		        //untuk menampilkan aksi(edit/delete dengan parameter kode kelas)
 		        array(
 		              'db' => 'kd_kelas',
@@ -98,10 +98,10 @@
 		// loadDataSiswa() -> untuk menampilkan data siswa nim dan nama sesuai kode_kelas yang dipilih di filter, lalu ditampilkan ke div id = kelas yang bedada di view/siswa_aktif -> terletak di controller Siswa
 		function combobox_kelas()
 		{
-			$kelas = $_GET['kd_kelas'];
+			$jurusan = $_GET['kd_tingkatan'];
 			echo "<select id='cbkelas' name='kelas' class='form-control' onChange='loadSiswa()'>";
 
-			$this->db->where('kd_kelas', $kelas);
+			$this->db->where('kd_tingkatan', $jurusan);
 			$kelas = $this->db->get('tbl_kelas');
 			foreach ($kelas->result() as $row) {
 				echo "<option value='$row->kd_kelas' onChange='loadSiswa()'>$row->nama_kelas</option>";

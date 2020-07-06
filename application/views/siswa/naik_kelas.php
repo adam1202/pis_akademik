@@ -38,7 +38,7 @@
                 <!-- <button type="submit" name="export_jadwal" class="btn btn-success btn-sm"> Naik Kelas</button> -->
                 <?php
                     
-                    echo anchor('siswa/aksi_naikkelas', '<button class="btn btn-info btn-flat margin">Naik Kelas</button>');
+                  
                 ?>
           </td>
         
@@ -49,7 +49,7 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Table Siswa</h3>
+              <h3 class="box-title">Data Siswa</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

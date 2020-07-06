@@ -32,12 +32,11 @@
                   </div>
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Jenis Kelamin
-                      </label>
+                      <label class="col-sm-2 control-label">Jenis Kelamin</label>
 
                       <div class="col-sm-5">
                         <?php
-                          echo form_dropdown('jenis Kelamin', array('Pilih jenis Kelamin', 'P'=>'Pria', 'W'=>'Wanita'), $guru['jenis Kelamin'], "class='form-control'");
+                          echo form_dropdown('jenis_kelamin', array('Pilih Jenis Kelamin ', 'L'=>'Laki-Laki', 'P'=>'Perempuan'), $guru['jenis_kelamin'], "class='form-control'");
                         ?>
                       </div>
                   </div>

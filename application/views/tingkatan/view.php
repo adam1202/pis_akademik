@@ -4,7 +4,7 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Table Tingkatan Kelas</h3>
+              <h3 class="box-title">Data Tingkatan Kelas</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

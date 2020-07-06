@@ -38,16 +38,16 @@
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th class="text-center" width="100">NIM</th>
+                        <th class="text-center" width="100">NISN</th>
                         <th>NAMA SISWA</th>
                         <th class="text-center">NILAI</th>
                     </tr>
                     <?php
                         foreach ($siswa as $row) {
                             echo "<tr>
-                                    <td class='text-center'>$row->nim</td>
+                                    <td class='text-center'>$row->nisn</td>
                                     <td>$row->nama</td>
-                                    <td width='100'><input type='int' onKeyUp='updateNilai(\"$row->nim\")' id='nilai".$row->nim."' value='".check_nilai($row->nim, $this->uri->segment(3))."' class='form-control'></input></td>
+                                    <td width='100'><input type='int' onKeyUp='updateNilai(\"$row->nisn\")' id='nilai".$row->nisn."' value='".check_nilai($row->nisn, $this->uri->segment(3))."' class='form-control'></input></td>
                                  </tr>";
                         }
                     ?>
@@ -65,17 +65,17 @@
     <!-- /.row -->
 </section>
 
-<!-- onKeyUp='updateNilai(\"$row->nim\")' -->
+<!-- onKeyUp='updateNilai(\"$row->nisn\")' -->
 <!-- untuk memberikan parameter string di javascript harus diikuti dengan \" \" -->
 
 <script type="text/javascript">
-    function updateNilai(nim)
+    function updateNilai(nisn)
     {
-        var nilai = $("#nilai"+nim).val();
+        var nilai = $("#nilai"+nisn).val();
         $.ajax({
             type    : 'GET',
             url     : '<?php echo base_url(); ?>nilai/update_nilai',
-            data    : 'nim='+nim+'&id_jadwal='+<?php echo $this->uri->segment(3); ?>+'&nilai='+nilai,
+            data    : 'nisn='+nisn+'&id_jadwal='+<?php echo $this->uri->segment(3); ?>+'&nilai='+nilai,
             success : function(html) {
                 
             }

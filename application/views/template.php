@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sistem Nilai | Rapor</title>
+  <title>SI NILAI RAPOR | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -44,7 +44,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>SISTEM INFORMASI NILAI</b>RAPOR</span>
+      <span class="logo-lg"><b>Si</b>RAPOR</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -69,7 +69,7 @@
 
                 <p>
                   <?php echo $this->session->userdata('nama_lengkap'); ?>
-                  <small>Member since Nov. 2012</small>
+                  <small></small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -218,8 +218,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Version 2.0</small>
+        Sistem Informasi Akademik Nilai Siswa Sdn 35 Tegineneng
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
@@ -238,8 +238,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020
   </footer>
 
   <!-- Control Sidebar -->
@@ -262,7 +261,7 @@
               <div class="menu-info">
                 <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-                <p>Will be 23 on April 24th</p>
+                <p></p>
               </div>
             </a>
           </li>
@@ -273,7 +272,7 @@
               <div class="menu-info">
                 <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
 
-                <p>New phone +1(800)555-1234</p>
+                <p></p>
               </div>
             </a>
           </li>
@@ -282,9 +281,8 @@
               <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
 
               <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                <p>nora@example.com</p>
+                <h4 class="control-sidebar-subheading">
+                <p></p>
               </div>
             </a>
           </li>

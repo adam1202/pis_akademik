@@ -12,7 +12,8 @@
             <!-- button add -->
             <?php
                 echo anchor('guru/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
-            ?>
+                echo anchor('guru/export', '<button class="btn btn-danger btn-flat margin">Cetak</button>');
+                ?>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>

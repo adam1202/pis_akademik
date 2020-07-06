@@ -11,6 +11,11 @@
       $this->load->model('model_guru');
     }
 
+    function report (){
+  $data["get_data"] = $this->model_guru->report();
+  $this->load->view("guru/report", $data);
+}
+
     function data()
     {
 
@@ -29,7 +34,7 @@
                 'dt' => 'jenis_kelamin',
                 'formatter' => function($d) {
                   //Apabila $d bernilai P maka akan menampilkan 'Pria' apabila bernilai selain P akan menampilkan 'Wanita'
-                  return $d == 'P' ? 'Pria' : 'Wanita';
+                  return $d == 'L' ? 'Laki-Laki' : 'Perempuan';
                 }
               ),
             //untuk menampilkan aksi(edit/delete dengan parameter id guru)

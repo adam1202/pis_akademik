@@ -12,6 +12,53 @@
 			$this->load->model('model_siswa');
 		}
 
+		function report (){
+		$data["get_data"] = $this->model_siswa->report();
+		$this->load->view("siswa/report", $data);
+		}
+
+		// function nilai_siswa()
+		// {
+		// 	// $nisn 					= $this->uri->segment(3);
+		// 	// $sql 					= "SELECT ts.nama, tm.nama_mapel, tn.nilai
+		// 	// 						  FROM tbl_nilai AS tn, tbl_jadwal AS tj, tbl_mapel AS tm, tbl_siswa AS ts
+		// 	// 						  WHERE tn.id_jadwal = tj.id_jadwal AND tj.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
+		// 	// $data['nilai_siswa'] 	= $this->db->query($sql);
+		// 	$nisn 					= $this->uri->segment(3);
+		// 	$sql 					= "SELECT ts.nama, tn.nilai, tm.nama_mapel
+		// 							  FROM tbl_nilai AS tn, tbl_siswa AS ts, tbl_mapel AS tm
+		// 							  WHERE tn.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
+		// 	$data['nilai_siswa'] 	= $this->db->query($sql);
+		// 	$this->template->load('template', 'siswa/nilai', $data);
+		// }
+
+		// function report_nilai ($nisn){
+		// $data["get_data"] = $this->model_siswa->report_nilai($nisn);
+		// $this->load->view("siswa/report_nilai", $data);
+		// }
+
+		// function report_nilai($nisn) {
+		// 	$this->db->select("*");
+		// 	$this->db->from("tbl_nilai");
+		// 	$this->db->join("tbl_mapel", "tbl_mapel.kd_mapel = tbl_nilai.kd_mapel");
+		// 	$this->db->join("tbl_siswa", "tbl_siswa.nisn = tbl_nilai.nisn");
+		// 	$this->db->where($nisn);
+		// 	$query = $this->db->get();
+		// 	return $query;
+		// }
+
+		function report_nilai (){
+			$nisn = $this->uri->segment(3);
+			$sql = "SELECT * 
+					FROM tbl_nilai 
+					INNER JOIN tbl_mapel ON tbl_mapel.kd_mapel = tbl_nilai.kd_mapel
+					INNER JOIN tbl_siswa ON tbl_siswa.nisn = tbl_nilai.nisn
+					WHERE nisn = '$nisn'
+					";
+			$data['report_nilai'] = $this->db->query($sql);
+			$this->load->view('siswa/report_nilai', $data);
+		}
+
 		function data()
 		{
 
@@ -29,7 +76,16 @@
 					  }
 				),
 				array('db' => 'nisn', 'dt' => 'nisn'),
-		        array('db' => 'nama', 'dt' => 'nama'),
+				array('db' => 'nama', 'dt' => 'nama'),
+				array(
+					'db' => 'jenis_kelamin',
+					'dt' => 'jenis_kelamin',
+					'formatter' => function($d) {
+					  //Apabila $d bernilai L maka akan menampilkan 'Laki-Laki' apabila bernilai selain L akan menampilkan 'Perempuan'
+					  return $d == 'L' ? 'Laki-Laki' : 'Perempuan';
+					}
+				  ),
+				// array('db' => 'jenis_kelamin', 'dt' =>'jenis_kelamin' ),
 		        array('db' => 'tempat_lahir', 'dt' => 'tempat_lahir'),
 		        array('db' => 'tanggal_lahir', 'dt' => 'tanggal_lahir'),
 		        //untuk menampilkan aksi(edit/delete dengan parameter nisn siswa)
@@ -123,7 +179,7 @@
 
 			echo "<table class='table table-striped table-bordered table-hover table-full-width dataTable'>
 					<tr>
-						<th width=100 class='text-center'>NISN</th>
+						<th width=100 class='text-center'>nisn</th>
 						<th>NAMA</th>
 						<th class='text-center'>NILAI</th>
 					</tr>";
@@ -139,6 +195,33 @@
 			}
 			echo "</table>";
 		}
+
+
+		function nilai_siswa()
+		{
+			// $nisn 					= $this->uri->segment(3);
+			// $sql 					= "SELECT ts.nama, tm.nama_mapel, tn.nilai
+			// 						  FROM tbl_nilai AS tn, tbl_jadwal AS tj, tbl_mapel AS tm, tbl_siswa AS ts
+			// 						  WHERE tn.id_jadwal = tj.id_jadwal AND tj.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
+			// $data['nilai_siswa'] 	= $this->db->query($sql);
+			$nisn 					= $this->uri->segment(3);
+			$sql 					= "SELECT ts.nama, tn.nilai, tm.nama_mapel
+									  FROM tbl_nilai AS tn, tbl_siswa AS ts, tbl_mapel AS tm
+									  WHERE tn.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
+			$data['nilai_siswa'] 	= $this->db->query($sql);
+			$this->template->load('template', 'siswa/nilai', $data);
+		}
+
+		
+		// function report_nilai()
+		// {
+		// 	$nisn 					= $this->uri->segment(3);
+		// 	$sql 					= "SELECT ts.nama, tn.nilai, tm.nama_mapel
+		// 							  FROM tbl_nilai AS tn, tbl_siswa AS ts, tbl_mapel AS tm
+		// 							  WHERE tn.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
+		// 	$data['report_siswa'] 	= $this->db->query($sql);
+		// 	$this->template->load('siswa/report_nilai', $data);
+		// }
 
 		function export_excel()
 		{
@@ -163,15 +246,8 @@
 	        force_download('data-siswa.xlsx', NULL);
 		}
 
-		function nilai_siswa()
-		{
-			$nisn 					= $this->uri->segment(3);
-			$sql 					= "SELECT ts.nama, tm.nama_mapel, tn.nilai
-									  FROM tbl_nilai AS tn, tbl_jadwal AS tj, tbl_mapel AS tm, tbl_siswa AS ts
-									  WHERE tn.id_jadwal = tj.id_jadwal AND tj.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
-			$data['nilai_siswa'] 	= $this->db->query($sql);
-			$this->template->load('template', 'siswa/nilai', $data);
-		}
+		
+
 
 		function form(){
 		    $data = array(); // Buat variabel $data sebagai array
@@ -236,7 +312,8 @@
 		        // Kita push (add) array data ke variabel data
 		        array_push($data, [
 		          'nisn'=>$nisn, // Insert data nis
-		          'nama'=>$nama, // Insert data nama
+				  'nama'=>$nama, // Insert data nama
+				  'jenis_kelamin'=>$jenis_kelamin,//Insert data jenis kelamin
 		          'tanggal_lahir'=>$tanggal_lahir, // Insert data jenis kelamin
 		          'tempat_lahir'=>$tempat_lahir, // Insert data alamat
 		        ]);
@@ -286,28 +363,8 @@
 			//$querynaik = "UPDATE tbl_siswa SET kd_kelas = '8-A1' WHERE nisn = '18SI1000' AND kd_kelas = '$kelas'"
 		}
 
-		// function loadDataSiswa()
-		// {
-		// 	$kelas 	= $_GET['kd_kelas'];
 
-		// 	echo "<table class='table table-striped table-bordered table-hover table-full-width dataTable'>
-		// 			<tr>
-		// 				<th width=100 class='text-center'>nisn</th>
-		// 				<th>NAMA</th>
-		// 				<th class='text-center'>NILAI</th>
-		// 			</tr>";
 
-		// 	$this->db->where('kd_kelas', $kelas);
-		// 	$siswa = $this->db->get('tbl_siswa');
-		// 	foreach ($siswa->result() as $row) {
-		// 		echo "<tr>
-		// 				<td class='text-center'>$row->nisn</td>
-		// 				<td>$row->nama</td>
-		// 				<td class='text-center'>".anchor('siswa/nilai_siswa/'.$row->nisn, '<i class="fa fa-eye" aria-hidden="true"></i>')."</td>
-		// 			 </tr>";
-		// 	}
-		// 	echo "</table>";
-		// }
 
 	}
 

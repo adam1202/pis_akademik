@@ -3,6 +3,49 @@
 	class Model_siswa extends CI_Model
 	{
 
+		function report() {
+			$this->db->from("tbl_siswa");
+			$this->db->join("tbl_agama", "tbl_agama.kd_agama = tbl_siswa.kd_agama");
+			$this->db->join("tbl_kelas", "tbl_kelas.kd_kelas = tbl_siswa.kd_kelas");
+			$query = $this->db->get();
+			return $query;
+		}
+
+		function report_nilai($nisn) {
+			$this->db->select("*");
+			$this->db->from("tbl_nilai");
+			$this->db->join("tbl_mapel", "tbl_mapel.kd_mapel = tbl_nilai.kd_mapel");
+			$this->db->join("tbl_siswa", "tbl_siswa.nisn = tbl_nilai.nisn");
+			$this->db->where($nisn);
+			$query = $this->db->get();
+			return $query;
+		}
+
+
+
+		// public function tigatable($aktif) {
+		// 	$this->db->select('*');
+		// 	$this->db->from('tbrakyat');
+		// 	$this->db->join('tbsekolah','tbsekolah.id=tbrakyat.id');
+		// 	$this->db->join('tbstatus','tbstatus.idpendidikan=tbsekolah.idpendidikan');
+		// 	$this->db->where($aktif);
+		// 	$query = $this->db->get();
+		// 	return $query->result();
+		//    }
+
+		// public function cetak_id($nisn) {
+		// 	$data = array(
+		// 	 'record'  => $this->db->query("SELECT * FROM siswa where ='$id'"),
+		//    );
+		//    $this->load->view('v_cetak',$data);
+		//    $html = $this->output->get_output();
+		//    $this->load->library('dompdf_gen');
+		//    $this->dompdf->load_html($html);
+		//    $this->dompdf->render();
+		//    $sekarang=date("d:F:Y:h:m:s");
+		//    $this->dompdf->stream("pendaftaran".$sekarang.".pdf",array('Attachment'=>0));
+		// }
+
 		public $table ="tbl_siswa";
 
 		function save($foto)
@@ -11,9 +54,10 @@
 				//tabel di database => name di form
 				'nisn'           => $this->input->post('nisn', TRUE),
 				'nama'          => $this->input->post('nama', TRUE),
+				'jenis_kelamin'  => $this->input->post('jenis_kelamin', TRUE),
 				'tanggal_lahir' => $this->input->post('tanggal_lahir', TRUE),
 				'tempat_lahir'  => $this->input->post('tempat_lahir', TRUE),
-				'jenis_kelamin'        => $this->input->post('jenis_kelamin', TRUE),
+				
 				'kd_agama'	    => $this->input->post('agama', TRUE),
 				'foto'			=> $foto,
 				'kd_kelas'	    => $this->input->post('kelas', TRUE),
@@ -36,9 +80,9 @@
 				//update tanpa foto
 				$data = array(
 					'nama'          => $this->input->post('nama', TRUE),
+					'jenis_kelamin' => $this->input->post('jenis_kelamin', TRUE),
 					'tanggal_lahir' => $this->input->post('tanggal_lahir', TRUE),
 					'tempat_lahir'  => $this->input->post('tempat_lahir', TRUE),
-					'jenis_kelamin'        => $this->input->post('jenis_kelamin', TRUE),
 					'kd_agama'	    => $this->input->post('agama', TRUE),
 					'kd_kelas'	    => $this->input->post('kelas', TRUE),
 				);
@@ -46,9 +90,9 @@
 				//update dengan foto
 				$data = array(
 					'nama'          => $this->input->post('nama', TRUE),
+					'jenis_kelamin' => $this->input->post('jenis_kelamin', TRUE),
 					'tanggal_lahir' => $this->input->post('tanggal_lahir', TRUE),
 					'tempat_lahir'  => $this->input->post('tempat_lahir', TRUE),
-					'jenis_kelamin'        => $this->input->post('jenis_kelamin', TRUE),
 					'kd_agama'	    => $this->input->post('agama', TRUE),
 					'foto'			=> $foto,
 					'kd_kelas'	    => $this->input->post('kelas', TRUE),

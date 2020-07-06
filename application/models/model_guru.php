@@ -3,6 +3,13 @@
   class Model_guru extends CI_Model
   {
 
+        function report() {
+      $this->db->from("tbl_guru");
+      $query = $this->db->get();
+      return $query;
+    }
+
+
     public $table = "tbl_guru";
 
     function save()
@@ -17,6 +24,8 @@
       );
       $this->db->insert($this->table, $data);
     }
+
+
 
     function update()
     {

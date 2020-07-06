@@ -17,18 +17,18 @@
 
                 <table class="table table-bordered">
                     <tr>
-                        <td>Kelas</td>
+                        <td>Tingkat Kelas</td>
                         <td>
-                            <?php echo cmb_dinamis('kelas', 'tbl_kelas', 'nama_kelas', 'kd_kelas', null, "id='filter_tingkatan' onChange='loadKelas()'") 
-                            ?>        
+                            <?php echo cmb_dinamis('tingkatan_kelas', 'tbl_tingkatan_kelas', 'nama_tingkatan', 'kd_tingkatan', null, "id='filter_tingkatan' onChange='loadKelas()'") 
+                        ?>        
                         </td>
                     </tr>
-                    <!-- <tr>
+                    <tr>
                         <td>Kelas</td>
                         <td>    
-                            <div id="kelas"></div>
+                            <div id="tingkatan_kelas"></div>
                         </td>
-                    </tr> -->
+                    </tr>
                     <tr>
                         <td colspan="2">
                            <button type="submit" name="export_jadwal" class="btn btn-success btn-sm"><i class="fa fa-print" aria-hidden="true"></i> Export Data</button>
@@ -46,15 +46,14 @@
         <!-- /.col -->
 
         <div class="col-xs-8">
-
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Table Siswa</h3>
+              <h3 class="box-title">Data Siswa</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
-                <div id="kelas"></div>
+                <div id="dataSiswa"></div>
 
             </div>
             <!-- /.box-body -->
@@ -98,10 +97,10 @@
         
         $.ajax({
             type    : 'GET',
-            url     : '<?php echo base_url() ?>siswa/loadDataSiswa',
-            data    : 'kd_kelas='+kelas,
+            url     : '<?php echo base_url() ?>kelas/combobox_kelas',
+            data    : 'kd_tingkatan='+tingkatan_kelas,
             success : function(html) {
-                $("#kelas").html(html);
+                $("#tingkatan_kelas").html(html);
                 var kelas   = $("#cbkelas").val();
                 loadSiswa(kelas);
             }

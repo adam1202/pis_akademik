@@ -1,19 +1,3 @@
-<?php
-
-// $namanya = $_GET['nama'];
-$nisn = $_GET['nisn'];
-// var_dump($namanya);
-// var_dump($nisn);
-// $nisn   = $this->uri->segment(3);
-// $query = "SELECT ts.nama, tm.kd_mapel, tn.nisn
-
-//         FROM tbl_nilai AS tn, tbl_siswa AS ts, tbl_mapel AS tm
-//         WHERE tn.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
-// $sql = $this->db->query($query)->row_array();
-var_dump($nisn);
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +20,7 @@ var_dump($nisn);
                 </tr>            
         </thead>
         <tbody>
-        	<?php $no = 1; foreach ($get_data->result() as $d) {
+        	<?php $no = 1; foreach ($report_nilai->result() as $d) {
 
                             if($d->nilai > 90){
                                 $Keterangan = '<p class="text-black">A</p>';

@@ -210,6 +210,7 @@
 									  WHERE tn.kd_mapel = tm.kd_mapel AND tn.nisn = ts.nisn AND tn.nisn = '$nisn'";
 			$data['nilai_siswa'] 	= $this->db->query($sql);
 			$this->template->load('template', 'siswa/nilai', $data);
+
 		}
 
 		

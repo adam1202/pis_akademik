@@ -12,7 +12,6 @@ Feature
 - CRUD Mapel
 - CRUD Ruangan Kelas
 - CRUD Tingkatan Kelas
-- CRUD Jurusan
 - CRUD Tahun Akademik
 - CRUD Kelas
 - CRUD Kurikulum
@@ -21,11 +20,9 @@ Feature
 - CRUD Menu
 - CRUD User(Super Admin/Admin/Keuangan)
 - Manage Rule User
-- Generate Jadwal Pelajaran(Not Genetic Algorithm)
 - Print Jadwal Pelajaran
 - Export Data Siswa
 - Input Nilai Siswa
-- Export Data Nilai (e-Raport)
 
 Requitment
 ----------
@@ -33,12 +30,6 @@ Requitment
 
 Note
 ----------
-First Login(Admin) <br>
-**username**: zuhri <br>
-**password**: 123456 <br>
-Database: MySql <br>
-Name: pis_akademik.sql
-
 Support
 ----------
 If you have any question, feel free to email me.

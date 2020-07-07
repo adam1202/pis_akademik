@@ -53,7 +53,7 @@
 					FROM tbl_nilai 
 					INNER JOIN tbl_mapel ON tbl_mapel.kd_mapel = tbl_nilai.kd_mapel
 					INNER JOIN tbl_siswa ON tbl_siswa.nisn = tbl_nilai.nisn
-					WHERE nisn = '$nisn'
+					WHERE tbl_siswa.nisn = '$nisn'
 					";
 			$data['report_nilai'] = $this->db->query($sql);
 			$this->load->view('siswa/report_nilai', $data);
